@@ -6,20 +6,20 @@ import defaultConfigurations from './configurations';
 
 // compile
 const compileConfiguration = (options = {}, bitsConfig) => {
-  const configurations = options.useDefaultConfiguration ? defaultConfigurations : [];
+  const configurations = options.skipDefaultConfiguration ? [] : defaultConfigurations;
 
   return {
     port: options.port || 3000,
-    configs: [...configurations, options.configs],
+    configs: [...configurations, ...(options.configs || [])],
 
     schema: bitsConfig.schema,
     routes: bitsConfig.routes,
   };
 };
 
-// bit
-export default (options) => {
-  return (bitsConfig) => {
+// create bit
+const initializeServer = (options) =>
+  (bitsConfig) => {
     const config = compileConfiguration(options, bitsConfig);
 
     // create and configure the app
@@ -29,6 +29,11 @@ export default (options) => {
     applyRoutes(app, config);
 
     // start the server
-    app.listen(process.env.PORT || expressConfig.port);
+    app.listen(process.env.PORT || config.port);
   };
-};
+
+
+export default (options) =>
+({
+   initializeServer: initializeServer(options),
+});

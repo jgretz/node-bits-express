@@ -6,9 +6,7 @@ echo('Building ...');
 rm('-rf', 'lib');
 
 // move over
-exec('babel -d lib/ src/index.js');
-mv('lib/src/index.js', 'lib/index.js');
-rm('-rf', 'lib/src/');
+exec('babel -d lib/ src/');
 rm('-rf', 'lib/tools/');
 
 echo('Build Complete');
