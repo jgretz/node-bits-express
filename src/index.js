@@ -1,7 +1,7 @@
 import express from 'express';
 
 import configure from './configure';
-import applyRoutes from './routes';
+import routes from './routes';
 import defaultConfigurations from './configurations';
 
 // compile
@@ -26,7 +26,7 @@ const initializeServer = (options) =>
     const app = express();
 
     configure(app, config);
-    applyRoutes(app, config);
+    routes(app, config);
 
     // start the server
     app.listen(process.env.PORT || config.port);
