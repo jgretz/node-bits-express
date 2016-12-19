@@ -12,7 +12,7 @@ export default (app, config) => {
     const { verb, route, implementation } = routeDefinition;
 
     // only accept certain verbs
-    if (!VERBS.includes(verb.toLowerCase())) {
+    if (!verb || !VERBS.includes(verb.toLowerCase())) {
       return;
     }
 
