@@ -14,6 +14,9 @@ const compileConfiguration = (options = {}, bitsConfig) => {
 
     schema: bitsConfig.schema,
     routes: bitsConfig.routes,
+
+    hooks: options.hooks || [],
+    database: bitsConfig.database,
   };
 };
 

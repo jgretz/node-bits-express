@@ -15,7 +15,9 @@ export default (app, config) => {
     });
   };
 
-  callHooks(BEFORE_CONFIGURE_ROUTES, { app, router, routes: config.routes });
+  const args = { app, router, routes: config.routes, database: config.database };
+
+  callHooks(BEFORE_CONFIGURE_ROUTES, args);
 
   _.forEach(config.routes, (routeDefinition) => {
     const { verb, route, implementation } = routeDefinition;
@@ -30,7 +32,7 @@ export default (app, config) => {
     });
   });
 
-  callHooks(AFTER_CONFIGURE_ROUTES, { app, router, routes: config.routes });
+  callHooks(AFTER_CONFIGURE_ROUTES, args);
 
   app.use(router);
 };
