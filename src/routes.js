@@ -1,12 +1,21 @@
 import _ from 'lodash';
 import express from 'express';
-
-const BEFORE = 'before';
-const AFTER = 'after';
-const VERBS = ['get','put','post','delete'];
+import { BEFORE_CONFIGURE_ROUTES, AFTER_CONFIGURE_ROUTES, VERBS } from 'node-bits';
 
 export default (app, config) => {
   var router = express.Router();
+
+  const callHooks = (action, args) => {
+    _.forEach(config.hooks, hook => {
+      if (!hook[action]) {
+        return;
+      }
+
+      hook[action](args);
+    });
+  };
+
+  callHooks(BEFORE_CONFIGURE_ROUTES, { app, router, routes: config.routes });
 
   _.forEach(config.routes, (routeDefinition) => {
     const { verb, route, implementation } = routeDefinition;
@@ -17,17 +26,11 @@ export default (app, config) => {
     }
 
     router[verb](route, (req, res) => {
-      if (implementation[BEFORE]) {
-        implementation[BEFORE](req, res);
-      }
-
       implementation[verb](req, res);
-
-      if (implementation[AFTER]) {
-        implementation[AFTER](req, res);
-      }
     });
   });
+
+  callHooks(AFTER_CONFIGURE_ROUTES, { app, router, routes: config.routes });
 
   app.use(router);
 };
