@@ -1,5 +1,5 @@
-import bodyParser from 'body-parser';
+import _bodyParser from 'body-parser';
 
-export default (app) => {
-  app.use(bodyParser.json({ type: 'application/json' }));
+export const bodyParser = (app) => {
+  app.use(_bodyParser.json({ type: 'application/json' }));
 };

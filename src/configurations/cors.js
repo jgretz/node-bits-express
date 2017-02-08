@@ -1,5 +1,5 @@
-import cors from 'cors';
+import _cors from 'cors';
 
-export default (app) => {
-  app.use(cors());
+export const cors = (config) => (app) => {
+  app.use(_cors(config));
 };

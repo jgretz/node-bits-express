@@ -2,15 +2,12 @@ import express from 'express';
 
 import configure from './configure';
 import routes from './routes';
-import defaultConfigurations from './configurations';
 
 // compile
 const compileConfiguration = (options = {}, bitsConfig) => {
-  const configurations = options.skipDefaultConfiguration ? [] : defaultConfigurations;
-
   return {
     port: options.port || 3000,
-    configs: [...configurations, ...(options.configs || [])],
+    configurations: options.configurations || [],
 
     schema: bitsConfig.schema,
     routes: bitsConfig.routes,
@@ -35,8 +32,11 @@ const initializeServer = (options) =>
     app.listen(process.env.PORT || config.port);
   };
 
-
+// export server
 export default (options) =>
 ({
    initializeServer: initializeServer(options),
 });
+
+// export oob configurations
+export * from './configurations';
