@@ -4,8 +4,8 @@ import configure from './configure';
 import routes from './routes';
 
 // compile
-const compileConfiguration = (options = {}, bitsConfig) => {
-  return {
+const compileConfiguration = (options = {}, bitsConfig) =>
+  ({
     port: options.port || 3000,
     configurations: options.configurations || [],
 
@@ -14,12 +14,11 @@ const compileConfiguration = (options = {}, bitsConfig) => {
 
     hooks: options.hooks || [],
     database: bitsConfig.database,
-  };
-};
+  });
 
 // create bit
-const initializeServer = (options) =>
-  (bitsConfig) => {
+const initializeServer = options =>
+  bitsConfig => {
     const config = compileConfiguration(options, bitsConfig);
 
     // create and configure the app
@@ -33,9 +32,9 @@ const initializeServer = (options) =>
   };
 
 // export server
-export default (options) =>
+export default options =>
 ({
-   initializeServer: initializeServer(options),
+  initializeServer: initializeServer(options),
 });
 
 // export oob configurations

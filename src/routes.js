@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import express from 'express';
-import { BEFORE_CONFIGURE_ROUTES, AFTER_CONFIGURE_ROUTES, VERBS } from 'node-bits';
+import {BEFORE_CONFIGURE_ROUTES, AFTER_CONFIGURE_ROUTES, VERBS} from 'node-bits';
 
 export default (app, config) => {
-  var router = express.Router();
+  const router = express.Router(); // eslint-disable-line
 
   const callHooks = (action, args) => {
     _.forEach(config.hooks, hook => {
@@ -15,12 +15,12 @@ export default (app, config) => {
     });
   };
 
-  const args = { app, router, routes: config.routes, database: config.database };
+  const args = {app, router, routes: config.routes, database: config.database};
 
   callHooks(BEFORE_CONFIGURE_ROUTES, args);
 
-  _.forEach(config.routes, (routeDefinition) => {
-    const { verb, route, implementation } = routeDefinition;
+  _.forEach(config.routes, routeDefinition => {
+    const {verb, route, implementation} = routeDefinition;
 
     // only accept certain verbs
     if (!verb || !VERBS.includes(verb.toLowerCase())) {

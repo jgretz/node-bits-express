@@ -44,14 +44,24 @@ configurations: [cors({ methods: [GET,POST,PUT,DELETE,OPTIONS] }), bodyParser],
 
 The signature for these functions is: ``` (app, config) => {} ```. The first parameter is the express application. The second parameter is the overall config of node-bits.
 
-node-bits-express exposes two configurations that are often used by most servers.
-#### Cors
-Cors uses the [cors](https://www.npmjs.com/package/cors) npm package. It accepts an object that matches the cors config you can find in their documentation. Most often it is simply passing in the methods to which you want cors to apply (as seen in the example above).
+node-bits-express exposes multiple configurations that we have found used across different projects.
 
-#### Body Parser
+#### cors
+cors uses the [cors](https://www.npmjs.com/package/cors) npm package. It accepts an object that matches the cors config you can find in their documentation. Most often it is simply passing in the methods to which you want cors to apply (as seen in the example above).
+
+#### bodyParser
 [body-parser](https://www.npmjs.com/package/body-parser) is a middleware for express that will parse the body of a http call and place it at req.body.
 
 * note: body-parser does NOT handle multipart data. See their documentation for suggestions.
+
+#### noCache
+Depending on what's consuming your api, there are times when get api calls are cached (I'm looking at you IE 11). NoCache adds a middleware to the express response chain to add the following headers:
+
+```
+'Cache-Control': 'no-cache, no-store, must-revalidate'
+'Pragma': 'no-cache'
+'Expires': 0
+```
 
 ### Hooks
 Hooks allow you to hook into a certain points in the server lifecycle. Right now the two options are BEFORE_CONFIGURE_ROUTES and AFTER_CONFIGURE_ROUTES.
