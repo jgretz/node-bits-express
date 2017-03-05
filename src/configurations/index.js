@@ -1,4 +1,3 @@
-import cors from './cors';
-import bodyparser from './bodyparser';
-
-export default [cors, bodyparser];
+export * from './cors';
+export * from './bodyparser';
+export * from './no_cache';
