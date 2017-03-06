@@ -22,7 +22,7 @@ import nodeBitsExpress, { cors, bodyParser } from 'node-bits-express';
 nodeBits([
   nodeBitsExpress({
     port: 3000,
-    configurations: [cors({ methods: [GET,POST,PUT,DELETE,OPTIONS] }), bodyParser],
+    configurations: [cors({ methods: [GET,POST,PUT,DELETE,OPTIONS] }), bodyParser({limit: '5mb'})],
     hooks: []
   })
 ];
@@ -51,6 +51,8 @@ cors uses the [cors](https://www.npmjs.com/package/cors) npm package. It accepts
 
 #### bodyParser
 [body-parser](https://www.npmjs.com/package/body-parser) is a middleware for express that will parse the body of a http call and place it at req.body.
+
+It accepts an object that matches the config you can find in their documentation.
 
 * note: body-parser does NOT handle multipart data. See their documentation for suggestions.
 
