@@ -36,7 +36,7 @@ export default (app, config) => {
       return;
     }
 
-    router[verb](route, (req, res) => {
+    router[verb.toLowerCase()](route, (req, res) => {
       const requestArgs = {...args, routeDefinition, verb, req, res};
       callHooks(BEFORE_EXECUTE_ROUTE, requestArgs);
 

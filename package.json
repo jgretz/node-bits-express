@@ -1,6 +1,6 @@
 {
   "name": "node-bits-express",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Adds express functionality to NodeBits",
   "main": "lib/index.js",
   "scripts": {
