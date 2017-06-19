@@ -40,7 +40,7 @@ export default (app, config) => {
       const requestArgs = {...args, routeDefinition, verb, req, res};
       callHooks(BEFORE_EXECUTE_ROUTE, requestArgs);
 
-      implementation[verb](req, res);
+      implementation[verb.toLowerCase()](req, res);
 
       callHooks(AFTER_EXECUTE_ROUTE, requestArgs);
     });
