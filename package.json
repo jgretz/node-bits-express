@@ -1,6 +1,6 @@
 {
   "name": "node-bits-express",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Adds express functionality to NodeBits",
   "main": "lib/index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/jgretz/node-bits-express#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
     "cors": "^2.8.3",
     "express": "^4.15.3",
     "express-fileupload": "^0.1.3",
