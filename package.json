@@ -1,6 +1,6 @@
 {
   "name": "node-bits-express",
-  "version": "0.0.21",
+  "version": "0.0.23",
   "description": "Adds express functionality to NodeBits",
   "main": "lib/index.js",
   "scripts": {
@@ -19,25 +19,25 @@
   },
   "homepage": "https://github.com/jgretz/node-bits-express#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "compression": "^1.7.0",
-    "cors": "^2.8.3",
-    "express": "^4.15.3",
-    "express-fileupload": "^0.1.3",
-    "lodash": "^4.17.4",
-    "multer": "^1.2.1",
-    "node-bits": "^0.0.26"
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.5",
+    "lodash": "^4.17.11",
+    "multer": "^1.4.1",
+    "node-bits": "^0.0.35"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "eslint": "^4.0.0",
-    "eslint-plugin-import": "^2.3.0",
-    "nodemon": "^1.9.2",
-    "shelljs": "^0.7.8"
+    "babel-register": "^6.26.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-import": "^2.17.3",
+    "nodemon": "^1.19.1",
+    "shelljs": "^0.8.3"
   }
 }
